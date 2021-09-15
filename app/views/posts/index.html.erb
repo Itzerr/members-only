@@ -1,0 +1,13 @@
+<section class="column">
+  <% if member_signed_in? %>
+    <article class="post">
+      <h2>Write a Post!</h2><br>
+      <%= render 'form' %>
+    </article>
+    <hr>
+  <% end %>
+  <% @posts.each do |post| %>
+    <%= render 'post', post: post %>
+    <hr>
+  <% end %>
+</section>

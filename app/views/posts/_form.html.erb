@@ -1,0 +1,25 @@
+<%= form_with(model: @post) do |form| %>
+  <% if @post.errors.any? %>
+    <section>
+      <ul>
+        <% @post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+
+  <section>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, required: true %>
+  </section><br>
+
+  <section>
+    <%= form.label :body %><br>
+    <%= form.text_area :body, required: true %>
+  </section><br>
+
+  <section>
+    <%= form.submit %>
+  </section>
+<% end %>

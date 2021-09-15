@@ -1,0 +1,32 @@
+<article class="column">
+  <h2>Log in</h2>
+
+  <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <section>
+      <%= f.label :username %><br />
+      <%= f.text_field :username, autofocus: true, required: true, autocomplete: "username" %>
+    </section>
+
+    <section>
+      <%= f.label :password %><br />
+      <%= f.password_field :password, required: true, minlength: 6, autocomplete: "current-password" %>
+    </section>
+
+    <% if devise_mapping.rememberable? %>
+      <section>
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </section>
+    <% end %>
+
+    <section>
+      <%= f.submit "Log in" %>
+    </section>
+  <% end %>
+
+  <section>
+    <%= render "devise/shared/links" %>
+  </section>
+</article>

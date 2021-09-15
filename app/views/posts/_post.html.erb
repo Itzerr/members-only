@@ -1,0 +1,11 @@
+<article>
+  <h2><%= post.title %></h2>
+  <small>
+    <% if member_signed_in? %>
+      by <%= post.member.username %>
+    <% else %>
+      <%= link_to 'Log in to see author', new_member_session_path %>
+    <% end %>
+  </small>
+  <p><%= post.body %></p>
+</article>

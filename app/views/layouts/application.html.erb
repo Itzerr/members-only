@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MembersOnly</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar">
+      <h1><%= link_to 'Members Only', root_path %></h1>
+      <nav>
+        <ul>
+          <li><%= link_to 'Home', root_path %></li>
+          <% if member_signed_in? %>
+            <li><%= link_to current_member.username, edit_member_registration_path %></li>
+            <li><%= link_to 'Log Out', destroy_member_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Sign Up', new_member_registration_path %></li>
+            <li><%= link_to 'Log In', new_member_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>
